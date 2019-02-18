@@ -16,7 +16,7 @@ CREATE TABLE Employees (
 	title VARCHAR(200),
 	username VARCHAR(200) NOT NULL,
 	password VARCHAR(200) NOT NULL,
-	manager_id SERIAL NOT NULL,
+	manager_id INTEGER NOT NULL,
 	CONSTRAINT pk_employees_id PRIMARY KEY (id),
 	CONSTRAINT check_password CHECK (LENGTH(password) >= 10),
 	CONSTRAINT fk_managers_employees_Nto1 FOREIGN KEY (manager_id) REFERENCES Managers(id),
@@ -29,8 +29,9 @@ CREATE TABLE Reimbursment_requests (
 	pending BOOLEAN DEFAULT true,
 	resolved BOOLEAN DEFAULT false,
 	approved BOOLEAN DEFAULT false,
-	denies BOOLEAN DEFAULT false,
-	employee_id SERIAL NOT NULL,
+	denied BOOLEAN DEFAULT false,
+	employee_id INTEGER NOT NULL,
 	CONSTRAINT u_receipt UNIQUE (receipt),
+	CONSTRAINT pk_reimbursment_requests_id PRIMARY KEY (id),
 	CONSTRAINT fk_employees_reimbursment_requests_Nto1 FOREIGN KEY (employee_id) REFERENCES Employees(id)
 );
