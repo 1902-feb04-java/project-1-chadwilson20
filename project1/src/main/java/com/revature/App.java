@@ -30,6 +30,7 @@ public class App
             String money = scanner.next();
             System.out.println("Credentials you entered: EmployeeId: " + employeeId + " ManagerId: " + managerId + " Money: " + money);
             System.out.println("Thank you for your reimbursment request!");
+            scanner.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
