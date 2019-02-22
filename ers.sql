@@ -25,6 +25,7 @@ CREATE TABLE Employees (
 
 CREATE TABLE Reimbursment_requests (
 	id SERIAL,
+	money NUMERIC(4, 2) NOT NULL,
 	receipt BYTEA,
 	pending BOOLEAN DEFAULT true,
 	resolved BOOLEAN DEFAULT false,
