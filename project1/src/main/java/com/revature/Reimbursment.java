@@ -78,16 +78,21 @@ public class Reimbursment {
 		}
 		return -1;
 	}
-	public int read() {
-		try(Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM reimbursment_requests");
-			ResultSet rs = preparedStatement.executeQuery();)
+	public int read(boolean isManager, int employeeId, String typeOfView) {
+		try(Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);)
 		{
-			while(rs.next()) {
-				System.out.println(rs.getString("id"));
-				System.out.println(rs.getString("money"));
-				System.out.println(rs.getString("receipt"));
-				System.out.println(rs.getString("employee_id"));
+			if(isManager && typeOfView.equals("all pending requests")) {
+				PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM reimbursment_requests WHERE pending = ?");
+				preparedStatement.setBoolean(1, true);
+				ResultSet rs = preparedStatement.executeQuery();
+				while(rs.next()) {
+					System.out.println(rs.getString("id"));
+					System.out.println(rs.getString("money"));
+					System.out.println(rs.getString("receipt"));
+					System.out.println(rs.getString("employee_id"));
+				}
+				preparedStatement.close();
+				rs.close();
 			}
 			return 0;
 		} catch (SQLException e) {
