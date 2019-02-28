@@ -12,16 +12,18 @@ import javax.servlet.http.HttpSession;
 public class Homepage extends HttpServlet {
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
 		username = request.getParameter("username");
 		String password = request.getParameter("password");
 		session.setAttribute("username", username);
 		session.setAttribute("password", password);
-		
+
 		PrintWriter writer = response.getWriter();
 		writer.println("<h1>Hello " + username + "! What would you like to do?</h1>");
 		writer.println("<a href='logout'>logout</a>");
+		writer.close();
 	}
 }
