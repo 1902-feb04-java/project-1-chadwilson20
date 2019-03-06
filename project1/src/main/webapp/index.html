@@ -6,9 +6,20 @@
 </head>
 <body>
 	<h1>Hello, please enter your username and password</h1>
+	<h2>Employee Login</h2>
 	<form action="homepage" method="post">
-		<input type="text" name="username">Username
-		<input type="text" name="password">Password
+		Username: <input type="text" name="username" required><br>
+		<br>
+		Password: <input type="password" name="password" required><br>
+		<br>
+		<input type="submit">
+	</form>
+	<h2>Manager Login</h2>
+	<form action="ManagerHomepage" method="post">
+		Username: <input type="text" name="username" required><br>
+		<br>
+		Password: <input type="password" name="password" required><br>
+		<br>
 		<input type="submit">
 	</form>
 </body>

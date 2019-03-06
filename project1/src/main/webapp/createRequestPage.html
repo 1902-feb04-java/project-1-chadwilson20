@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Create a Reimbursment Request</title>
+</head>
+<body>
+	<h1>Please fill out the form below to make your reimbursment request</h1>
+	<form action="CreateReimbursmentRequest" method="post">
+		Reimbursment Amount: <input type="number" name="money" min="0.01" step="0.01" required><br>
+		<br>
+		Description: <input type="text" name="description" required><br>
+		<br>
+		Submit a picture of your receipt (optional): <input type="file" name="receipt" accept="image/*"><br>
+		<br>
+		<input type="submit">
+	</form>
+	<br>
+</body>
+</html>

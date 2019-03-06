@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.revature.Employee;
+import com.revature.Manager;
 
-public class Homepage extends HttpServlet {
+public class ManagerHomepage extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
@@ -29,14 +29,14 @@ public class Homepage extends HttpServlet {
 		}
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		Employee employee = new Employee();
-		if (employee.validateUser(username, password)) {
+		Manager manager = new Manager();
+		if (manager.validateUser(username, password)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);
 			PrintWriter writer = response.getWriter();
 			writer.println("<h1>Hello " + username + "! What would you like to do?</h1>");
-			request.getRequestDispatcher("homepage.html").include(request, response);
+			request.getRequestDispatcher("managerHomepage.html").include(request, response);
 			writer.close();
 		} else {
 			PrintWriter writer = response.getWriter();
@@ -45,4 +45,5 @@ public class Homepage extends HttpServlet {
 			writer.close();
 		}
 	}
+
 }

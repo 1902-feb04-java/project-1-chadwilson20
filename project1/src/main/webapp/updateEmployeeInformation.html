@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Your Information</title>
+</head>
+<body>
+	<h1>Select what you want to update and enter the text you want to update it to</h1>
+	<form action="UpdateEmployeeInformation" method="post">
+		<select name="updateValue" required>
+			<option value="firstname">First Name</option>
+			<option value="lastname">Last Name</option>
+			<option value="title">Title</option>
+			<option value="username">Username</option>
+			<option value="password">Password</option>
+		</select>
+		<br>
+		<br>
+		Enter Update Text:<input type="text" name="updateText" required>
+		<br>
+		<br>
+		<input type="submit">
+	</form>
+</body>
+</html>
